@@ -133,7 +133,7 @@ $(document.body).bind("DOMNodeInserted",function(){
 
 // category search box section
 $( "#category" ).autocomplete({
-    source: "http://localhost:8080/categories/search",
+    source: "/categories/search",
     classes: {
         "ui-autocomplete": "pac-container list-group"
 }
@@ -161,7 +161,7 @@ $( "#category" ).data().uiAutocomplete._renderItem = function( ul, item ) {
 // submit section
 
 $("#submit").click( function () { // add validation checking
-    $("<form action=\"http://localhost:8080/activities/new\" method=\"post\" style=\"display: none;\">"+
+    $("<form action=\"/activities/new\" method=\"post\" style=\"display: none;\">"+
     "<input type=\"text\" name=\"addressLoc\" value=\""+addressLoc+"\">"+
     "<input type=\"text\" name=\"address\" value=\""+$("#address").val()+"\">"+
     "<input type=\"text\" name=\"category\" value=\""+$("#category").val()+"\">"+
