@@ -1,0 +1,15 @@
+.content-area {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+#map-canvas {
+    height: 100vh;
+    /* background-color: aqua; */
+}
+
+.sticky-area {
+    position: fixed;
+    right: 0;
+}
