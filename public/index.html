@@ -2,76 +2,64 @@
 <html>
 
 <head>
-  <title>Add Activity</title>
+  <title>Together activties </title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"> -->
-  <link href="styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="main/team.png">
+  <link rel="stylesheet" type="text/css" href="main/style.css">
 </head>
 
 <body>
-  <div class="container-fluid p-0">
-      <div class="row m-0">
-          <div class="col-md-3 content-area p-sm-3">
-                  <h3>Add New Activity</h3> <!-- class="mt-3" -->
-                  <hr>
-                  <div> <!-- form -->
-                    <div class="form-group">
-                      <label>Address</label>
-                      <input type="search" class="form-control" placeholder="Address" id="address">
-                      <small class="form-text text-muted">Search for address or click on the map.</small>
-                    </div>
-                    <div class="form-group">
-                      <!-- bootstrap-select option -->
-                      <!-- <select class="form-control selectpicker" data-live-search="true" title="Category">
-                            <option>Football</option>
-                            <option>Basketball</option> -->
-                            <!-- add more options in js -->
-                      <!-- </select> -->
-                      <label>Category</label>
-                      <input type="text" class="form-control" placeholder="Category" id="category">
-                      <small class="form-text text-muted">Choose a category or add a new one.</small>
-                      <!-- add list to be inflated when searching and when selecting one result insert it into the input - in main.js -->
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                          <label>Time</label>
-                          <input type="time" class="form-control" value="00:00" id="time">
-                          <small class="form-text text-muted">Enter the time of the activity.</small>
-                      </div>
-                      <div class="form-group col-md-6">
-                          <label>Date</label>
-                          <input type="date" class="form-control" id="date">
-                          <small class="form-text text-muted">Enter the date of the activity.</small>
-                      </div>
-                      <!-- <label>Date and Time</label>
-                      <input type="datetime-local" class="form-control">
-                      <small class="form-text text-muted">Enter the date and the time of the activity.</small> -->
-                    </div>
-                    <div class="form-group">
-                      <label>Description</label>
-                      <input type="text" class="form-control" placeholder="Title" id="title">
-                      <textarea class="form-control" rows="3" placeholder="Full description" id="fullDsc"></textarea>
-                      <small class="form-text text-muted">Describe your activity with a concise title and a full description.</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit">Create Activity</button>
-                  </div>
-          </div>
-          <div class="col-md-9 p-0 sticky-area">
-              <div id="map-canvas">
+  <div class="p-0">
+    <div id="map-canvas">
+      <div class="p-0 sticky-area">
 
-              </div>
-          </div>
       </div>
+    </div>
   </div>
+
+  <div id="floating-panel" class="input-group col-sm-4">
+    <input id="search-text" type="text" class="form-control" placeholder="Search activties" aria-label="Search activties" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button id="search-button" class="btn btn-info" type="submit">
+          <img src="main/research.png">
+        </button>
+        <hr>
+        <a class="btn btn-info" href="">
+          <img src="main/add326.gif">
+        </a>     
+    </div>
+  </div>
+  <div id="floating-panel" class="input-group col-sm-4">
+      <div class="input-group-append">
+          <button id="search-button" class="btn btn-info" type="submit">
+            <img src="main/research.png">
+          </button>
+          <hr>
+          <a class="btn btn-info" href="login-out/signin.html">
+            <img src="main/add326.gif">
+          </a>     
+      </div>
+    </div>
+
+
+
+
+
+  <!-- <script src="jquery/dist/jquery.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> -->
-  <script src="main.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8&libraries=geometry,places&language=en&callback=initMap"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="module" src="main/main.js"></script>
+  <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8&libraries=geometry,places&language=en&callback=initMap"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXkL50KRp0tMsdH2OjfQJqybqzP1yUky8&language=en">
+  </script>
 </body>
+
 </html>
