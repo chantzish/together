@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="icon" type="image/png" href="main/team.png">
-  <link rel="stylesheet" type="text/css" href="main/style.css">
+  <link rel="stylesheet" type="text/css" href="main/mainStyle.css">
 </head>
 
 <body>
@@ -21,32 +21,33 @@
     </div>
   </div>
 
-  <div id="floating-panel" class="input-group col-sm-4">
+  <div id="floating-panel-l" class="input-group col-sm-4">
     <input id="search-text" type="text" class="form-control" placeholder="Search activties" aria-label="Search activties" aria-describedby="basic-addon2">
     <div class="input-group-append">
-        <button id="search-button" class="btn btn-info" type="submit">
-          <img src="main/research.png">
-        </button>
-        <hr>
-        <a class="btn btn-info" href="">
-          <img src="main/add326.gif">
-        </a>     
+      <button id="search-button" class="btn btn-info" type="submit">
+        <img src="main/research.png">
+      </button>
+      <hr>
+      <a class="btn btn-info" href="add-activity/index.html">
+        <img src="main/add326.gif">
+      </a>
     </div>
   </div>
-  <div id="floating-panel" class="input-group col-sm-4">
-      <div class="input-group-append">
-          <button id="search-button" class="btn btn-info" type="submit">
-            <img src="main/research.png">
+  <div id="floating-panel-r" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">        
+        <button id="search-button" class="btn btn-info" type="submit">
+            My activity
+            <!-- <img src="main/research.png"> -->
           </button>
-          <hr>
+      </div>
+      
+      <div class="btn-group" role="group" aria-label="Third group">
           <a class="btn btn-info" href="login-out/signin.html">
-            <img src="main/add326.gif">
-          </a>     
+            login
+            <!-- <img src="main/add326.gif"> -->
+          </a>
       </div>
     </div>
-
-
-
 
 
   <!-- <script src="jquery/dist/jquery.js"></script> -->
