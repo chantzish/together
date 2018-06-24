@@ -4,7 +4,8 @@ var activities;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: currentLoc,
-      zoom: 15
+      zoom: 15,
+      fullscreenControl: false
     });
 
     var markers = [];

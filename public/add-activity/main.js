@@ -8,7 +8,8 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       // todo: check the current location and set normal zoom.
       zoom: 15,
-      center: currentLoc || {lat: 32.050593605888004, lng: 34.766852259635925}
+      center: currentLoc || {lat: 32.050593605888004, lng: 34.766852259635925},
+      fullscreenControl: false
     });
     geocoder = new google.maps.Geocoder();
 
