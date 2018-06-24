@@ -45,7 +45,7 @@ class GoogleMaps {
                     console.log('Error: ' + xhr.status);
                     currentLoc = { lat: 32.050593605888004, lng: 34.766852259635925 };
                 }
-                this.initalizeMap(currentLoc);
+                self.initalizeMap(currentLoc);
             }
         };
         xhr.send(null);
