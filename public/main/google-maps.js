@@ -28,6 +28,7 @@ class GoogleMaps {
     }
     // get current location for map center
     getCurrentLocation() {
+        let self = this;
         let xhr = new XMLHttpRequest();
         xhr.open('post', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8');
         xhr.onreadystatechange = function () {
