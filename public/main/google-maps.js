@@ -28,14 +28,14 @@ class GoogleMaps {
     }
     // get current location for map center
     getCurrentLocation() {
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('post', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8');
         xhr.onreadystatechange = function () {
-            var DONE = 4; // readyState 4 means the request is done.
-            var OK = 200; // status 200 is a successful return.
+            let DONE = 4; // readyState 4 means the request is done.
+            let OK = 200; // status 200 is a successful return.
             if (xhr.readyState === DONE) {
                 if (xhr.status === OK) {
-                    currentLoc = JSON.parse(xhr.response).location;
+                    let currentLoc = JSON.parse(xhr.response).location;
                     // if (map){
                     //     map.panTo(currentLoc);
                     // }
