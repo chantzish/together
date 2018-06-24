@@ -28,6 +28,7 @@ class GoogleMaps {
     }
     // get current location for map center
     getCurrentLocation() {
+        let self = this;
         let xhr = new XMLHttpRequest();
         xhr.open('post', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8');
         xhr.onreadystatechange = function () {
@@ -44,7 +45,7 @@ class GoogleMaps {
                     console.log('Error: ' + xhr.status);
                     currentLoc = { lat: 32.050593605888004, lng: 34.766852259635925 };
                 }
-                this.initalizeMap(currentLoc, that);
+                self.initalizeMap(currentLoc);
             }
         };
         xhr.send(null);
