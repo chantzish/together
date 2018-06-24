@@ -1,45 +1,63 @@
 /**
  * class the manegeth login & logout
 */
-const STORAGE_ID = 'togetherAppUsers';
+const STORAGE_USER = 'togetherAppUsers';
+const SRORAGE_CURRENT_USER = 'CurrentUser'
 class LoginOut {
     constructor() {
         this.users = [];
+        localStorage.removeItem(SRORAGE_CURRENT_USER);
     }
 
     saveToLocalStorage() {
         let name = this.users[this.users.length - 1].name;
         let password = this.users[this.users.length - 1].password;
-        localStorage.setItem(STORAGE_ID, JSON.stringify(this.users));
-        // localStorage.setItem(STORAGE_ID, JSON.stringify({ nameId: name }));
-        // localStorage.setItem(STORAGE_ID, JSON.stringify({ passwordId: password }));
+        localStorage.setItem(STORAGE_USER, JSON.stringify(this.users));
+        localStorage.setItem(SRORAGE_CURRENT_USER, JSON.stringify(name));
+        // localStorage.setItem(STORAGE_USER, JSON.stringify({ nameId: name }));
+        // localStorage.setItem(STORAGE_USER, JSON.stringify({ passwordId: password }));
     }
     getFromLocalStorage() {
-        return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+        return JSON.parse(localStorage.getItem(STORAGE_USER) || '[]');       
     }
     addUser(userObj) {
-        let find = this.findUser(userObj);
-        if (find === -1) {
+        let index = this.findUser(userObj);
+        if (index < 0){
             this.users.push(userObj);
-            this.saveToLocalStorage();
+                this.saveToLocalStorage();
         }
-        else {
-            alert("this user" + userObj.name + "is already exists!");
+        else{
+            let valid = this.validationUser(userObj);
+            if (valid === true) {
+                alert("Hi " + userObj.name + "!");
+            }
+            else {
+                alert("The password is not correct please try agein!");
+            }
         }
-
     }
     removeUser(userObj) {
-        let userId = this.findUser(userObj);
-        this.users.splice(this.users.indexOf(userId), 1);
-        this.saveToLocalStorage();
-        // var $clickedPost = $(currentPost).closest('.post');
-        // var id = $clickedPost.data().id;
-        //  $clickedPost.remove();        
+        let index = this.findUser(userObj);
+        if (index < 0){
+            alert("The user not exsit!");
+        }
+        else{
+            let valid = this.validationUser(userObj);
+            if (valid === true) {
+                this.users.splice(this.users.indexOf(index), 1);
+                this.saveToLocalStorage();
+                alert("Removed ssucsed!");
+            }
+            else {
+                alert("The password you've is entered is incorrect, please try again!");
+            }
+
+        }       
     }
     findUser(userObj) {
         if (this.users.length > 0) {
             for (let i = 0; i < this.users.length; i++) {
-                if (this.users[i].name === userObj.name && this.users[i].password === userObj.password) {
+                if (this.users[i].name === userObj.name) {
                     return i;
                 }
             }
@@ -61,16 +79,7 @@ class LoginOut {
         else {
             return false;
         }
-    }
-    // renderUsers() {
-    //     $users.empty();
-    //     let arrOfUsers = this.getFromLocalStorage();
-    //     for (let i = 0; i < arrOfUsers.length; i++) {
-    //         var user = arrOfUsers[i];
-    //         // $posts.append('<p class="post" data-id=' + post.id + '>'
-    //         //     + '<a href="#" class="remove">remove</a> ' + post.text + '</p>');
-    //     }
-    // }
+    }    
 }
 
 export default LoginOut

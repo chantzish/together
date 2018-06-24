@@ -1,7 +1,7 @@
 /**
  * @class 
  */
-class EventsHandler {
+ class EventsHandler {
     constructor(loginOut) {
         this.loginOut = loginOut;
     }
@@ -15,10 +15,13 @@ class EventsHandler {
                 registered: false
             };
             this.loginOut.addUser(user);
-            $name.val('');
-            $password.val('');
+            //document.location.href = "index.html";
+            // $name.val('');
+            // $password.val('');
         });
     }
+
+    
 
     registerRemoveUser() {
        /*  this.$posts.on('click', '.remove-post', (event) => {

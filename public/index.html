@@ -28,39 +28,46 @@
         <img src="main/research.png">
       </button>
       <hr>
-      <a class="btn btn-info" href="add-activity/index.html">
+      <a class="btn btn-info" href="add-activity/newActivity.html">
         <img src="main/add326.gif">
       </a>
     </div>
   </div>
   <div id="floating-panel-r" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">        
-        <button id="search-button" class="btn btn-info" type="submit">
+        <a class="btn btn-info" href="management-my-activity/myActivity.html">
             My activity
             <!-- <img src="main/research.png"> -->
-          </button>
+        </a>
       </div>
       
-      <div class="btn-group" role="group" aria-label="Third group">
-          <a class="btn btn-info" href="login-out/signin.html">
-            login
-            <!-- <img src="main/add326.gif"> -->
-          </a>
+      <div class="btn-group" role="group" aria-label="Second group">
+          <a href="login-out/signin.html" class="btn btn-info"
+          onclick="centeredPopup('login-out/signin.html','loginWindow','300','400','no');return false"> login</a>
+
+        
+        <!-- <input type="button" value="Open a Popup Window" onclick="window.open('login-out/signin.html','loginWindow',
+        'height=500,width=400,left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=yes');">
+         -->
+        
       </div>
     </div>
 
+    
+<!-- <script src="jquery/dist/jquery.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+<script type="module" src="main/main.js"></script>
+<script src="login-out/popUp.js" ></script>
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8&libraries=geometry,places&language=en&callback=initMap"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXkL50KRp0tMsdH2OjfQJqybqzP1yUky8&language=en">
+</script>
 
   <!-- <script src="jquery/dist/jquery.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script type="module" src="main/main.js"></script>
-  <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8&libraries=geometry,places&language=en&callback=initMap"></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXkL50KRp0tMsdH2OjfQJqybqzP1yUky8&language=en">
-  </script>
-</body>
+ 
 
 </html>
