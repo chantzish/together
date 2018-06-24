@@ -12,6 +12,7 @@ function initMap() {
 
     // For each activity, get the address and location.
     var bounds = new google.maps.LatLngBounds();
+    bounds.extend(currentLoc);
     var addressLoc;
     activities.forEach(function(activity) {
         if (!activity.addressLoc) {
@@ -24,7 +25,12 @@ function initMap() {
         // Create a marker for each activity.
         markers.push(new google.maps.Marker({
             map: map,
-            title: activity.address,
+            title: activity.subject,
+            label: {
+                text: activity.category,
+                color: 'white',
+                fontSize: "8px"
+            },
             position: addressLoc
         }));
         bounds.extend(addressLoc);
