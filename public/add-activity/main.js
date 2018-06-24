@@ -186,7 +186,7 @@ $("#submit").click( function () { // todo: add validation checking
     "<input type=\"text\" name=\"category\" value=\""+$("#category").val()+"\">"+
     "<input type=\"text\" name=\"time\" value=\""+$("#time").val()+"\">"+
     "<input type=\"text\" name=\"date\" value=\""+$("#date").val()+"\">"+
-    "<input type=\"text\" name=\"title\" value=\""+$("#title").val()+"\">"+
+    "<input type=\"text\" name=\"subject\" value=\""+$("#subject").val()+"\">"+
     "<input type=\"text\" name=\"fullDsc\" value=\""+$("#fullDsc").val()+"\">"+
     "<input type=\"text\" name=\"username\" value=\""+localStorage.username+"\">"+
     "</form>").appendTo(document.body)[0].submit();

@@ -13,7 +13,7 @@ function render() {
         "<div class=\"card activity mb-3 col-4\">"+
             "<div class=\"card-body\">"+
                 "<h3 class=\"card-title\">"+
-                    activity.category+" - "+activity.title+
+                    activity.category+" - "+activity.subject+
                 "</h3>"+
                 "<p class=\"card-text\">"+
                     activity.address+"<br>"+

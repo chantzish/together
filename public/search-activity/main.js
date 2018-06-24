@@ -80,7 +80,7 @@ function render() {
         "<div class=\"card activity mb-3\">"+
             "<div class=\"card-body\" data-toggle=\"collapse\" data-target=\"#collapse"+activity._id+"\">"+
                 "<h3 class=\"card-title\">"+
-                    activity.category+" - "+activity.title+
+                    activity.category+" - "+activity.subject+
                 "</h3>"+
                 "<p class=\"card-text\">"+
                     activity.address+"<br>"+
@@ -119,6 +119,7 @@ $("#add-activity").click(function () {
 })
 
 $("#search-activity-submit").click(function () {
+    // ?
     if(login())
         $("<a href=\"/search-activity/index.html?q="+$("#search-activity").val()+"\"></a>").appendTo(document.body)[0].click();
 })

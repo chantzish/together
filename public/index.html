@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Together activties </title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="main/team.png">
+  <link rel="stylesheet" type="text/css" href="main/mainStyle.css">
+</head>
+
+<body>
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span> <!-- x button -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitlogin">Login</button>
+                </div>
+            </div>
+        </div>
+  </div>
+  <div class="p-0">
+    <div id="map-canvas">
+      <div class="p-0 sticky-area">
+
+      </div>
+    </div>
+  </div>
+
+  <div id="floating-panel-l" class="input-group col-sm-4">
+    <input id="search-text" type="text" class="form-control" placeholder="Search activties" aria-label="Search activties" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button id="search-button" class="btn btn-info" type="submit">
+        <img src="main/research.png">
+      </button>
+      <hr>
+      <a class="btn btn-info" href="add-activity/newActivity.html">
+        <img src="main/add326.gif">
+      </a>
+    </div>
+  </div>
+  <div id="floating-panel-r" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">        
+        <a class="btn btn-info" href="management-my-activity/myActivity.html">
+            My activity
+            <!-- <img src="main/research.png"> -->
+        </a>
+      </div>
+      
+      <div class="btn-group" role="group" aria-label="Second group">
+          <a href="login-out/signin.html" class="btn btn-info"
+          onclick="centeredPopup('login-out/signin.html','loginWindow','300','400','no');return false"> login</a>
+
+        
+        <!-- <input type="button" value="Open a Popup Window" onclick="window.open('login-out/signin.html','loginWindow',
+        'height=500,width=400,left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=yes');">
+         -->
+        
+      </div>
+    </div>
+
+    
+<!-- <script src="jquery/dist/jquery.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+<script type="module" src="main/main.js"></script>
+<script src="login-out/popUp.js" ></script>
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8&libraries=geometry,places&language=en&callback=initMap"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXkL50KRp0tMsdH2OjfQJqybqzP1yUky8&language=en">
+</script>
+
+  <!-- <script src="jquery/dist/jquery.js"></script> -->
+ 
+
+</html>

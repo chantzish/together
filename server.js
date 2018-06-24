@@ -24,21 +24,9 @@ app.engine("html", consolidate.handlebars);
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
-var Schema = mongoose.Schema;
-
-var activitySchema = new Schema({
-  addressLoc: { type: { type: String } , coordinates: [Number] }, // {lng: Number, lat: Number},
-  address: String,
-  category: String,
-  time: String,
-  date: String,
-  title: String,
-  fullDsc: String,
-  creator: String,
-  members: [String]
-});
-var Activity = mongoose.model('Activity', activitySchema);
-mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/activityDB' , function (error, result){
+var Activity = require("./models/togetherModel");
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://user:Resu1234@sandbox-shard-00-00-m73f0.gcp.mongodb.net:27017,sandbox-shard-00-01-m73f0.gcp.mongodb.net:27017,sandbox-shard-00-02-m73f0.gcp.mongodb.net:27017/activityDB?ssl=true&replicaSet=Sandbox-shard-0&authSource=admin&retryWrites=true',
+ function (error, result){
     if(error) { return console.error(error); }
     console.log ("DB connection established!!!");
 })
@@ -52,8 +40,11 @@ app.get('/categories/search', function(req, res){
 app.get('/activities/search', function(req, res){
     // console.log(req.query.q+" "+req.query.around);
     // {position: {$geoWithin: { $centerSphere: [ [ -10.732611054687766, 49.24238287959241 ], 0.15427981245264843 ]}}}
-    Activity.find({ $or: [{'category': {$regex: req.query.q}}, {'title': {$regex: req.query.q}}],
-    addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}}, function (error, result){
+    //addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}},
+    Activity.find({ $or: [{'category': {$regex: req.query.q}}, {'subject': {$regex: req.query.q}}],
+    // addressLoc: {$near: {$geometry: { type: "Point" , coordinates: [ req.query.around.split(',')[0] , req.query.around.split(',')[1] ]}}}},
+    addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}},
+    function (error, result){
         // error handling?
         if(error) { console.error(error);res.send("failed");return; }
         console.log ("result of find is: "+result);
@@ -71,7 +62,7 @@ app.post('/activities/new',function(req, res){
         category: req.body.category,
         time: req.body.time,
         date: req.body.date,
-        title: req.body.title,
+        subject: req.body.subject,
         fullDsc: req.body.fullDsc,
         creator: req.body.username,
         members: [req.body.username]
@@ -119,5 +110,18 @@ app.get('/activities/cancel',function(req, res){
         });
     });
 });
+
+app.get('/loadAllActivities', (request, response) => {
+    Activity.find({}, function (error, activities) {
+      if (error) {
+        response.send(error); 
+        console.error(error);
+      } else {
+        response.send(activities);
+      }
+    });
+});
+
+
 app.use(express.static("public"));
 app.listen(process.env.PORT || 8080)
