@@ -4,7 +4,7 @@
 
 class GoogleMaps {
     constructor() {
-        getCurrentLocation(this);
+        this.getCurrentLocation();
         // this.TogetherMap = new google.maps.Map(document.getElementById('map-canvas'), {
         //     panControl: true,
         //     zoomControl: true,
@@ -27,7 +27,7 @@ class GoogleMaps {
         // this.geocoder = new google.maps.Geocoder();
     }
     // get current location for map center
-    getCurrentLocation(that) {
+    getCurrentLocation() {
         var xhr = new XMLHttpRequest();
         xhr.open('post', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBc_ZPpAaLuPC3My03ZuZ2NBWThEPPxOj8');
         xhr.onreadystatechange = function () {
@@ -43,7 +43,7 @@ class GoogleMaps {
                     console.log('Error: ' + xhr.status);
                     currentLoc = { lat: 32.050593605888004, lng: 34.766852259635925 };
                 }
-                that.initalizeMap(currentLoc, that);
+                this.initalizeMap(currentLoc, that);
             }
         };
         xhr.send(null);
