@@ -158,16 +158,36 @@ $( "#category" ).data().uiAutocomplete._renderItem = function( ul, item ) {
       .appendTo( ul );
 }
 
+// login
+
+function login(){
+    if (localStorage.username){
+        return true;
+    }
+    $('#loginModal').modal('show');
+    return false;
+}
+function logout(){
+    localStorage.removeItem("username");
+}
+
+$("#submitlogin").click(function(){
+    localStorage.username = $("#username").val();
+    $('#loginModal').modal('hide');
+})
+
 // submit section
 
-$("#submit").click( function () { // add validation checking
+$("#submit").click( function () { // todo: add validation checking
+    if(login())
     $("<form action=\"/activities/new\" method=\"post\" style=\"display: none;\">"+
-    "<input type=\"text\" name=\"addressLoc\" value=\""+addressLoc+"\">"+
+    "<input type=\"text\" name=\"addressLoc\" value=\'"+JSON.stringify(addressLoc)+"\'>"+
     "<input type=\"text\" name=\"address\" value=\""+$("#address").val()+"\">"+
     "<input type=\"text\" name=\"category\" value=\""+$("#category").val()+"\">"+
     "<input type=\"text\" name=\"time\" value=\""+$("#time").val()+"\">"+
     "<input type=\"text\" name=\"date\" value=\""+$("#date").val()+"\">"+
     "<input type=\"text\" name=\"title\" value=\""+$("#title").val()+"\">"+
     "<input type=\"text\" name=\"fullDsc\" value=\""+$("#fullDsc").val()+"\">"+
-    "</form>").appendTo(document.body).submit();
+    "<input type=\"text\" name=\"username\" value=\""+localStorage.username+"\">"+
+    "</form>").appendTo(document.body)[0].submit();
 });
