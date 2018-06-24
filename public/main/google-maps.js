@@ -34,8 +34,9 @@ class GoogleMaps {
             let DONE = 4; // readyState 4 means the request is done.
             let OK = 200; // status 200 is a successful return.
             if (xhr.readyState === DONE) {
+                let currentLoc;
                 if (xhr.status === OK) {
-                    let currentLoc = JSON.parse(xhr.response).location;
+                    currentLoc = JSON.parse(xhr.response).location;
                     // if (map){
                     //     map.panTo(currentLoc);
                     // }
