@@ -98,10 +98,17 @@ function render() {
                 "<p class=\"card-text\">"+
                     activity.fullDsc+
                 "</p>"+
-                "<a class=\"btn btn-info\" href=\"/activities/join?id="+activity._id+"&username="+localStorage.username+"\">Join activity</a>"+
+                "<p class=\"card-text\">"+
+                    "Joined: "+activity.members.join(", ")+
+                "</p>"+
+                "<button type=\"button\" class=\"btn btn-info\" id=\"join\">Join activity</button>"+
             "</div>"+
         "</div>"
     ));
+    $("#join").click(function () {
+        if(login())
+            $("<a href=\"/activities/join?id="+activity._id+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
+    });
 }
 
 function login(){
@@ -115,18 +122,42 @@ function logout(){
     localStorage.removeItem("username");
 }
 
+function loginOutButton(){
+    if(localStorage.username){
+        $("#toggle-login").text("Logout");
+    }
+    else {
+        $("#toggle-login").text("Login");
+    }
+}
+
 $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
-})
+    loginOutButton();
+});
 
 $("#add-activity").click(function () {
     if(login())
         $("<a href=\"/add-activity/index.html\"></a>").appendTo(document.body)[0].click();
-})
+});
 
 $("#search-activity-submit").click(function () {
     // ?
-    if(login())
+    // if(login())
         $("<a href=\"/search-activity/index.html?q="+$("#search-activity").val()+"\"></a>").appendTo(document.body)[0].click();
-})
+});
+
+$("#my-activities").click(function () {
+    if(login())
+        $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
+});
+
+$("#toggle-login").click(function () {
+    if(login()){
+        logout();
+        loginOutButton();
+    }
+});
+
+loginOutButton();

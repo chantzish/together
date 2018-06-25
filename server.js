@@ -69,8 +69,8 @@ app.post('/activities/new',function(req, res){
     });
     newActivity.save(function (error, result){
         var message
-        if(error) { console.error(error);message = "failed"; }
-        else{console.log ("result of save is: "+result);message = "success";}
+        if(error) { console.error(error);message = "failed creating activity"; }
+        else{console.log ("result of save is: "+result);message = "activity created successfully";}
         res.render("status", {
             message: message,
             href: "/my-activities/index.html"
@@ -82,8 +82,8 @@ app.get('/activities/join',function(req, res){
     // console.log(req.query.id);
     Activity.update({ _id: req.query.id }, { $addToSet: { 'members': req.query.username }}, function (error, result){
         var message
-        if(error) { console.error(error);message = "failed"; }
-        else{console.log ("result of update-push is: "+result);message = "success";}
+        if(error) { console.error(error);message = "failed joining activity"; }
+        else{console.log ("result of update-push is: "+result);message = "joined activity successfully";}
         res.render("status", {
             message: message,
             href: "/my-activities/index.html"
@@ -102,8 +102,8 @@ app.get('/activities/mine',function(req, res){
 app.get('/activities/cancel',function(req, res){
     Activity.update({_id: req.query.id}, {$pull:{members: req.query.username}}, function (error, result){
         var message
-        if(error) { console.error(error);message = "failed"; }
-        else{console.log ("result of find is: "+result);message = "success";}
+        if(error) { console.error(error);message = "failed canceling activity"; }
+        else{console.log ("result of find is: "+result);message = "your activity participation was canceled successfully";}
         res.render("status", {
             message: message,
             href: "/my-activities/index.html"

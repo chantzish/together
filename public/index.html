@@ -51,32 +51,40 @@
     <input id="search-text" type="text" class="form-control" placeholder="Search activties" aria-label="Search activties" aria-describedby="basic-addon2">
     <div class="input-group-append">
       <button id="search-button" class="btn btn-info" type="submit">
-        <img src="main/research.png">
+        <img src="/img/search.png">
       </button>
-      <hr>
-      <a class="btn btn-info" href="add-activity/index.html">
-        <img src="main/add326.gif">
-      </a>
+      <!-- <hr> -->
+      <button id="add-activity" class="btn btn-info" type="button">
+          <img src="/img/add.gif">
+      </button>
     </div>
   </div>
-  <div id="floating-panel-r" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <!-- <div id="floating-panel-r" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">        
         <a class="btn btn-info" href="my-activities/index.html">
-            My activity
+            My activities -->
             <!-- <img src="main/research.png"> -->
-        </a>
+        <!-- </a>
       </div>
       
       <div class="btn-group" role="group" aria-label="Second group">
           <a href="login-out/signin.html" class="btn btn-info"
-          onclick="centeredPopup('login-out/signin.html','loginWindow','300','400','no');return false"> login</a>
+          onclick="centeredPopup('login-out/signin.html','loginWindow','300','400','no');return false"> login</a> -->
 
         
         <!-- <input type="button" value="Open a Popup Window" onclick="window.open('login-out/signin.html','loginWindow',
         'height=500,width=400,left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=yes');">
          -->
-        
+<!--         
       </div>
+    </div> -->
+    <div id="floating-panel-r" class="btn-toolbar">
+        <div class="btn-group mr-2">
+            <button type="button" class="btn btn-info" id="my-activities">My activities</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-info" id="toggle-login">Logout</button>
+        </div>
     </div>
 
     

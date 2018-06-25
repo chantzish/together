@@ -172,10 +172,34 @@ function logout(){
     localStorage.removeItem("username");
 }
 
+function loginOutButton(){
+    if(localStorage.username){
+        $("#toggle-login").text("Logout");
+    }
+    else {
+        $("#toggle-login").text("Login");
+    }
+}
+
 $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
-})
+    loginOutButton();
+});
+
+$("#my-activities").click(function () {
+    if(login())
+        $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
+});
+
+$("#toggle-login").click(function () {
+    if(login()){
+        logout();
+        loginOutButton();
+    }
+});
+
+loginOutButton();
 
 // submit section
 
