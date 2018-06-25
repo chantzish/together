@@ -10,6 +10,14 @@ class EventsHandler {
     getAllActivities() {
         let self = this;
         $.get('/loadAllActivities', (data) => {
+            console.log("try");
+            console.log(self.googleMaps.TogetherMap);
+            if(!(self.googleMaps.TogetherMap)){
+                setTimeout(function(){
+                    console.log("tryTimeout");
+                    self.getAllActivities();
+                }, 100)
+            }
             for (let i = 0; i < data.length; i++) {
                 var marker = new google.maps.Marker({
 

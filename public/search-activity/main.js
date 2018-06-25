@@ -84,7 +84,7 @@ function search(){
 
 function render() {
     activities.forEach(activity => $('.content-area').append(
-        "<div class=\"card activity mb-3\">"+
+        "<div class=\"card activity mb-3\" data-index=\""+activity._id+"\">"+
             "<div class=\"card-body\" data-toggle=\"collapse\" data-target=\"#collapse"+activity._id+"\">"+
                 "<h3 class=\"card-title\">"+
                     activity.category+" - "+activity.subject+
@@ -101,13 +101,13 @@ function render() {
                 "<p class=\"card-text\">"+
                     "Joined: "+activity.members.join(", ")+
                 "</p>"+
-                "<button type=\"button\" class=\"btn btn-info\" id=\"join\">Join activity</button>"+
+                "<button type=\"button\" class=\"btn btn-info join\">Join activity</button>"+
             "</div>"+
         "</div>"
     ));
-    $("#join").click(function () {
+    $(".join").click(function () {
         if(login())
-            $("<a href=\"/activities/join?id="+activity._id+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
+            $("<a href=\"/activities/join?id="+$(this).closest(".activity").data().index+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
     });
 }
 

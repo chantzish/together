@@ -42,8 +42,8 @@ app.get('/activities/search', function(req, res){
     // {position: {$geoWithin: { $centerSphere: [ [ -10.732611054687766, 49.24238287959241 ], 0.15427981245264843 ]}}}
     //addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}},
     Activity.find({ $or: [{'category': {$regex: req.query.q}}, {'subject': {$regex: req.query.q}}],
-    // addressLoc: {$near: {$geometry: { type: "Point" , coordinates: [ req.query.around.split(',')[0] , req.query.around.split(',')[1] ]}}}},
-    addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}},
+    addressLoc: {$near: {$geometry: { type: "Point" , coordinates: [ req.query.around.split(',')[0] , req.query.around.split(',')[1] ]}}}},
+    // addressLoc: {$geoWithin: { $centerSphere: [ [ req.query.around.split(',')[0], req.query.around.split(',')[1] ], 0.0003 ]}}},
     function (error, result){
         // error handling?
         if(error) { console.error(error);res.send("failed");return; }
@@ -100,15 +100,47 @@ app.get('/activities/mine',function(req, res){
     });
 });
 app.get('/activities/cancel',function(req, res){
-    Activity.update({_id: req.query.id}, {$pull:{members: req.query.username}}, function (error, result){
+    Activity.findByIdAndUpdate(req.query.id, {$pull:{members: req.query.username}}, function (error, result){
         var message
         if(error) { console.error(error);message = "failed canceling activity"; }
-        else{console.log ("result of find is: "+result);message = "your activity participation was canceled successfully";}
+        else {
+            console.log ("result of findByIdAndUpdate-pull is: "+result);
+            message = "your activity participation was canceled successfully";
+            if(result.members.length == 1 && result.members[0] === req.query.username){
+                Activity.deleteOne({_id: req.query.id}, function(deleteError, deleteResult){
+                    if(deleteError) { console.error(deleteError);}
+                    else {console.log ("result of deleteOne is: "+deleteResult);}
+                })
+            } 
+        }
         res.render("status", {
             message: message,
             href: "/my-activities/index.html"
         });
     });
+    // Activity.findById(req.query.id, function (error, result) {
+    //     var message
+    //     if (error){ console.error(error);message = "failed canceling activity"; }
+    //     else{
+    //         console.log ("result of findById is: "+result);
+    //         var index = result.members.indexOf(req.query.username);
+    //         if (index !== -1) array.splice(index, 1);
+    //         if(result.members.length > 0){
+    //             result.save(function (updateError, updateResult) {
+    //                 if (updateError) return console.error(updateError);
+    //                 console.log ("result of update-pull after cancel is: "+updateResult);
+    //             });
+    //         }
+    //         else {
+    //             result. //? delete
+    //         }
+    //         message = "your activity participation was canceled successfully";
+    //     }
+    //     res.render("status", {
+    //         message: message,
+    //         href: "/my-activities/index.html"
+    //     });
+    // });
 });
 
 app.get('/loadAllActivities', (request, response) => {
