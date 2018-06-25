@@ -13,3 +13,11 @@
     position: fixed;
     right: 0;
 }
+
+#floating-panel-r {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    height: 46px;
+    z-index: 6;
+}
