@@ -98,6 +98,9 @@ function render() {
                 "<p class=\"card-text\">"+
                     activity.fullDsc+
                 "</p>"+
+                "<p class=\"card-text\">"+
+                    "Joined: "+activity.members.join(", ")+
+                "</p>"+
                 "<button type=\"button\" class=\"btn btn-info\" id=\"join\">Join activity</button>"+
             "</div>"+
         "</div>"

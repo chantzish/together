@@ -10,7 +10,7 @@ function search(){
 
 function render() {
     activities.forEach(activity => $(".row").append(
-        "<div class=\"card activity mb-3 col-4\">"+
+        "<div class=\"card activity mb-3 col-6\">"+
             "<div class=\"card-body\">"+
                 "<h3 class=\"card-title\">"+
                     activity.category+" - "+activity.subject+
@@ -23,6 +23,9 @@ function render() {
             "<div class=\"card-body pt-0\">"+
                 "<p class=\"card-text\">"+
                     activity.fullDsc+
+                "</p>"+
+                "<p class=\"card-text\">"+
+                    "Joined: "+activity.members.join(", ")+
                 "</p>"+
                 "<a class=\"btn btn-danger\" href=\"/activities/cancel?id="+activity._id+"&username="+localStorage.username+"\">Cancel activity</a>"+
             "</div>"+
