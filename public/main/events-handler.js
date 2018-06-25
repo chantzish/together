@@ -16,9 +16,9 @@ class EventsHandler {
                     //position: { lat: data[i].location.lat, lng: data[i].location.lng },
                     position: {lat: data[i].addressLoc.coordinates[1], lng: data[i].addressLoc.coordinates[0]},
                     label: {
-                        text: data[i].category,
+                        text: data[i].category.charAt(0),
                         color: 'white',
-                        fontSize: "8px"
+                        fontSize: "18px"
                     },
                     title: data[i].subject
                 });

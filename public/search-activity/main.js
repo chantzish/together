@@ -27,9 +27,9 @@ function initMap() {
             map: map,
             title: activity.subject,
             label: {
-                text: activity.category,
+                text: activity.category.charAt(0),
                 color: 'white',
-                fontSize: "8px"
+                fontSize: "18px"
             },
             position: addressLoc
         }));

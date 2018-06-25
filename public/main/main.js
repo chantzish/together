@@ -8,7 +8,9 @@ let activityRepository = new ActivityRepository(googleMaps);
 let eventsHandler = new EventsHandler(googleMaps, activityRepository);
 eventsHandler.getAllActivities();
 eventsHandler.searchActivities();
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 
 
 
