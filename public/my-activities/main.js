@@ -9,6 +9,7 @@ function search(){
 }
 
 function render() {
+    $(".container").append("<h3>Activities of "+localStorage.username+"</h3>"+"<hr>"+"<div class=\"row\"></div>")
     activities.forEach(activity => $(".row").append(
         "<div class=\"card activity mb-3 col-6\">"+
             "<div class=\"card-body\">"+
