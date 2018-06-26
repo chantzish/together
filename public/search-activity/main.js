@@ -111,16 +111,18 @@ function render() {
         "</div>"
     ));
     $(".join").click(function () {
-        if(login())
+        if(login( function(){$(".collapse.show").find(".join")[0].click();} ))
             $("<a href=\"/activities/join?id="+$(this).closest(".activity").data().index+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
     });
 }
 
-function login(){
+var loginCallback = function(){};
+function login(callback){
     if (localStorage.username){
         return true;
     }
     $('#loginModal').modal('show');
+    loginCallback = callback;
     return false;
 }
 function logout(){
@@ -140,10 +142,11 @@ $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
     loginOutButton();
+    loginCallback();
 });
 
 $("#add-activity").click(function () {
-    if(login())
+    if(login( function(){$("#add-activity")[0].click()} ))
         $("<a href=\"/add-activity/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
@@ -154,12 +157,12 @@ $("#search-activity-submit").click(function () {
 });
 
 $("#my-activities").click(function () {
-    if(login())
+    if(login( function(){$("#my-activities")[0].click()} ))
         $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
 $("#toggle-login").click(function () {
-    if(login()){
+    if(login( function(){} )){
         logout();
         loginOutButton();
     }

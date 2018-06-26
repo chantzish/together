@@ -10,11 +10,13 @@ eventsHandler.getAllActivities();
 eventsHandler.searchActivities();
 
 // to sort
-function login(){
+window.loginCallback = function(){};
+function login(callback){
     if (localStorage.username){
         return true;
     }
     $('#loginModal').modal('show');
+    window.loginCallback = callback;
     return false;
 }
 function logout(){
@@ -34,20 +36,21 @@ $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
     loginOutButton();
+    window.loginCallback();
 });
 
 $("#add-activity").click(function () {
-    if(login())
+    if(login( function(){$("#add-activity")[0].click();} ))
         $("<a href=\"/add-activity/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
 $("#my-activities").click(function () {
-    if(login())
+    if(login( function(){$("#my-activities")[0].click();} ))
         $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
 $("#toggle-login").click(function () {
-    if(login()){
+    if(login(function(){})){
         logout();
         loginOutButton();
     }

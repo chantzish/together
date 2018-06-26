@@ -160,12 +160,13 @@ $( "#category" ).data().uiAutocomplete._renderItem = function( ul, item ) {
 }
 
 // login
-
-function login(){
+var loginCallback = function(){};
+function login(callback){
     if (localStorage.username){
         return true;
     }
     $('#loginModal').modal('show');
+    loginCallback = callback;
     return false;
 }
 function logout(){
@@ -185,15 +186,16 @@ $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
     loginOutButton();
+    loginCallback();
 });
 
 $("#my-activities").click(function () {
-    if(login())
+    if(login( function(){$("#my-activities")[0].click()} ))
         $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
 $("#toggle-login").click(function () {
-    if(login()){
+    if(login( function(){} )){
         logout();
         loginOutButton();
     }
@@ -204,7 +206,7 @@ loginOutButton();
 // submit section
 
 $("#submit").click( function () { // todo: add validation checking
-    if(login())
+    if(login( function(){$("#submit")[0].click()} ))
         $("<form action=\"/activities/new\" method=\"post\" style=\"display: none;\">"+
         "<input type=\"text\" name=\"addressLoc\" value=\'"+(JSON.stringify(addressLoc) || "")+"\'>"+
         "<input type=\"text\" name=\"address\" value=\""+($("#address").val() || "")+"\">"+
