@@ -205,14 +205,14 @@ loginOutButton();
 
 $("#submit").click( function () { // todo: add validation checking
     if(login())
-    $("<form action=\"/activities/new\" method=\"post\" style=\"display: none;\">"+
-    "<input type=\"text\" name=\"addressLoc\" value=\'"+JSON.stringify(addressLoc)+"\'>"+
-    "<input type=\"text\" name=\"address\" value=\""+$("#address").val()+"\">"+
-    "<input type=\"text\" name=\"category\" value=\""+$("#category").val()+"\">"+
-    "<input type=\"text\" name=\"time\" value=\""+$("#time").val()+"\">"+
-    "<input type=\"text\" name=\"date\" value=\""+$("#date").val()+"\">"+
-    "<input type=\"text\" name=\"subject\" value=\""+$("#subject").val()+"\">"+
-    "<input type=\"text\" name=\"fullDsc\" value=\""+$("#fullDsc").val()+"\">"+
-    "<input type=\"text\" name=\"username\" value=\""+localStorage.username+"\">"+
-    "</form>").appendTo(document.body)[0].submit();
+        $("<form action=\"/activities/new\" method=\"post\" style=\"display: none;\">"+
+        "<input type=\"text\" name=\"addressLoc\" value=\'"+(JSON.stringify(addressLoc) || "")+"\'>"+
+        "<input type=\"text\" name=\"address\" value=\""+($("#address").val() || "")+"\">"+
+        "<input type=\"text\" name=\"category\" value=\""+($("#category").val() || "")+"\">"+
+        "<input type=\"text\" name=\"time\" value=\""+($("#time").val() || "")+"\">"+
+        "<input type=\"text\" name=\"date\" value=\""+($("#date").val() || "")+"\">"+
+        "<input type=\"text\" name=\"subject\" value=\""+($("#subject").val() || "")+"\">"+
+        "<input type=\"text\" name=\"fullDsc\" value=\""+($("#fullDsc").val() || "")+"\">"+
+        "<input type=\"text\" name=\"username\" value=\""+(localStorage.username || "")+"\">"+
+        "</form>").appendTo(document.body)[0].submit();
 });
