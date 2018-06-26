@@ -1,6 +1,7 @@
 var map;
 var currentLoc;
 var activities;
+// var markers;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: currentLoc,
@@ -28,8 +29,12 @@ function initMap() {
             title: activity.subject,
             label: {
                 text: activity.category,
-                color: 'white',
-                fontSize: "8px"
+                color: 'white'
+                // ,fontSize: "8px"
+            },
+            icon: {
+                url:"https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2_hdpi.png",
+                labelOrigin: new google.maps.Point(27,27)
             },
             position: addressLoc
         }));

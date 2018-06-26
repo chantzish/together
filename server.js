@@ -1,4 +1,5 @@
 // todo: add tags from user
+// maximum length is "educate"
 var availableTags = [
     "sport",
     "chess",
@@ -7,7 +8,7 @@ var availableTags = [
     "politics",
     "cooking",
     "meeting",
-    "educating",
+    "educate",
     "cinema",
     "coding"
 ];

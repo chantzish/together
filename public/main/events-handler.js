@@ -25,8 +25,12 @@ class EventsHandler {
                     position: {lat: data[i].addressLoc.coordinates[1], lng: data[i].addressLoc.coordinates[0]},
                     label: {
                         text: data[i].category,
-                        color: 'white',
-                        fontSize: "8px"
+                        color: 'white'
+                        // ,fontSize: "8px"
+                    },
+                    icon: {
+                        url:"https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2_hdpi.png",
+                        labelOrigin: new google.maps.Point(27,27)
                     },
                     title: data[i].subject
                 });
