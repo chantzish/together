@@ -1,6 +1,7 @@
 var map;
 var currentLoc;
 var activities;
+// var markers;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: currentLoc,
@@ -28,8 +29,12 @@ function initMap() {
             title: activity.subject,
             label: {
                 text: activity.category,
-                color: 'white',
-                fontSize: "8px"
+                color: 'white'
+                // ,fontSize: "8px"
+            },
+            icon: {
+                url:"https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2_hdpi.png",
+                labelOrigin: new google.maps.Point(27,27)
             },
             position: addressLoc
         }));
@@ -84,7 +89,7 @@ function search(){
 
 function render() {
     activities.forEach(activity => $('.content-area').append(
-        "<div class=\"card activity mb-3\">"+
+        "<div class=\"card activity mb-3\" data-index=\""+activity._id+"\">"+
             "<div class=\"card-body\" data-toggle=\"collapse\" data-target=\"#collapse"+activity._id+"\">"+
                 "<h3 class=\"card-title\">"+
                     activity.category+" - "+activity.subject+
@@ -101,21 +106,23 @@ function render() {
                 "<p class=\"card-text\">"+
                     "Joined: "+activity.members.join(", ")+
                 "</p>"+
-                "<button type=\"button\" class=\"btn btn-info\" id=\"join\">Join activity</button>"+
+                "<button type=\"button\" class=\"btn btn-info join\">Join activity</button>"+
             "</div>"+
         "</div>"
     ));
-    $("#join").click(function () {
-        if(login())
-            $("<a href=\"/activities/join?id="+activity._id+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
+    $(".join").click(function () {
+        if(login( function(){$(".collapse.show").find(".join")[0].click();} ))
+            $("<a href=\"/activities/join?id="+$(this).closest(".activity").data().index+"&username="+localStorage.username+"\"></a>").appendTo(document.body)[0].click();
     });
 }
 
-function login(){
+var loginCallback = function(){};
+function login(callback){
     if (localStorage.username){
         return true;
     }
     $('#loginModal').modal('show');
+    loginCallback = callback;
     return false;
 }
 function logout(){
@@ -135,10 +142,11 @@ $("#submitlogin").click(function(){
     localStorage.username = $("#username").val();
     $('#loginModal').modal('hide');
     loginOutButton();
+    loginCallback();
 });
 
 $("#add-activity").click(function () {
-    if(login())
+    if(login( function(){$("#add-activity")[0].click()} ))
         $("<a href=\"/add-activity/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
@@ -149,12 +157,12 @@ $("#search-activity-submit").click(function () {
 });
 
 $("#my-activities").click(function () {
-    if(login())
+    if(login( function(){$("#my-activities")[0].click()} ))
         $("<a href=\"/my-activities/index.html\"></a>").appendTo(document.body)[0].click();
 });
 
 $("#toggle-login").click(function () {
-    if(login()){
+    if(login( function(){} )){
         logout();
         loginOutButton();
     }

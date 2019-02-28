@@ -10,6 +10,14 @@ class EventsHandler {
     getAllActivities() {
         let self = this;
         $.get('/loadAllActivities', (data) => {
+            console.log("try");
+            console.log(self.googleMaps.TogetherMap);
+            if(!(self.googleMaps.TogetherMap)){
+                setTimeout(function(){
+                    console.log("tryTimeout");
+                    self.getAllActivities();
+                }, 100)
+            }
             for (let i = 0; i < data.length; i++) {
                 var marker = new google.maps.Marker({
 
@@ -17,8 +25,12 @@ class EventsHandler {
                     position: {lat: data[i].addressLoc.coordinates[1], lng: data[i].addressLoc.coordinates[0]},
                     label: {
                         text: data[i].category,
-                        color: 'white',
-                        fontSize: "8px"
+                        color: 'white'
+                        // ,fontSize: "8px"
+                    },
+                    icon: {
+                        url:"https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2_hdpi.png",
+                        labelOrigin: new google.maps.Point(27,27)
                     },
                     title: data[i].subject
                 });
